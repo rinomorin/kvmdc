@@ -1,0 +1,9 @@
+{
+    "cSpell.ignoreWords": [
+        "Datacenter"
+    ],
+    "python.autoComplete.extraPaths": [],
+    "python.analysis.extraPaths": [],
+    "python.analysis.typeCheckingMode": "basic"
+  
+}

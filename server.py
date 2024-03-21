@@ -28,7 +28,7 @@ def get_nodes():
 
 @app.route('/api/vms')
 def get_vms():
-    vms = list(mongo.db.vms.find({}, {'_id': 0}))
+    vms = list(mongo.db.members.find({}, {'_id': 0}))
     return jsonify(vms)
 # Exclude _id field from the result
 

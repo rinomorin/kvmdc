@@ -1,0 +1,39 @@
+.DCHeader{
+    top:0;
+left:0;
+    margin: 0;
+    padding: 0;
+    /* position: relative; */
+    display: inline-block;
+    vertical-align: top; /* here */
+    text-align: left;
+    vertical-align: top;
+    background-image: linear-gradient(rgb(116, 17, 17), rgb(199, 15, 39));
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 8fr 1fr;
+    /* height: 30px; */
+    max-height: 30px; 
+}
+.DCHeaderTitle {
+    margin: 4px;
+    padding: 14px;
+    vertical-align: middle;
+    text-align: center;
+    color: darkkhaki;
+    font-size: 24px;
+    height: 6px;
+}
+.DCHeader h3 {
+    margin: 0;
+    padding: 0; 
+    vertical-align: top; 
+    font-style: italic;
+}
+.DCAuth {
+    color: darkkhaki;
+    position: fixed;
+    padding-right: 35;
+    margin-right: 15px;
+    right: 0;   
+}

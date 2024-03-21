@@ -4,6 +4,7 @@ build/
 
 ### VS Code ###
 !**/.vscode/
+.vscode/
 
 ### react ###
 !**/kvmdc/node_modules/

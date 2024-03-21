@@ -5,8 +5,8 @@ build/
 ### VS Code ###
 !**/.vscode/
 
-
 ### react ###
 !**/kvmdc/node_modules/
 !**/front-end/node_modules/
-!**/node_modules/
+/front-end/node_modules/
+!**/.env

@@ -10,7 +10,7 @@ function MainBody() {
                 <div className="LeftSide">
                     <KVMNodes />
                     <p><h1>test </h1></p>
-                    // <KVMVms />
+                    {/*  <KVMVms /> */}
                 </div>
                 <div className="RightSide">
                     <h3>right display</h3>

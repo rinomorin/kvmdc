@@ -26,7 +26,7 @@ const HostsList = () => {
         {hosts.map((host, index) => (
           <li key={index}>
             <h2>{host.domain}</h2>            
-            <ul className='DataCenter' data-header={"Datacenter ("+group.domain+")"} key={index}>
+            <ul className='DataCenter' data-header={"Datacenter ("+hosts.domain+")"} key={index}>
               {host.members.map((member, idx) => (
                 <li key={idx} value={member.node[0].ip}>
                   {member.node.map((node, i) => (

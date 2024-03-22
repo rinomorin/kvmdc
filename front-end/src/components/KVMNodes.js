@@ -6,10 +6,39 @@ function MyNodes() {
     const [nodes, setNodes] = useState([]);
 
     useEffect(() => {
-        fetch('/api/hosts')
-            .then(response => response.json())
-            .then(data => setNodes(data))
-            .catch(error => console.error('Error fetching nodes:', error));
+        const fetchJsonData = async () => {
+            try {
+              const response = await axios.get('http://192.168.100.3:5000/api/hosts');
+              setNodes(response.data);
+            } catch (error) {
+              console.error('Error fetching JSON data:', error);
+            }
+          };
+                
+          fetchJsonData();
+
+        /** 
+         * const HostsList = () => {
+  const [hosts, setHosts] = useState([]);
+
+  useEffect(() => {
+    const fetchHosts = async () => {
+      try {
+        const response = await axios.get('http://192.168.0.1:5000/api/hosts');
+        setHosts(response.data);
+      } catch (error) {
+        console.error('Error fetching hosts:', error);
+      }
+    };
+
+    fetchHosts();
+  }, []);
+         * 
+         */
+        // fetch('/api/hosts')
+        //     .then(response => response.json())
+        //     .then(data => setNodes(data))
+        //     .catch(error => console.error('Error fetching nodes:', error));
     }, []);
     return (
         <div>

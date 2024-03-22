@@ -20,24 +20,16 @@ const HostsList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Hosts List</h1>
-      <ul>
-        {hosts.map((host, index) => (
-          <li key={index}>
-            <h2>{host.domain}</h2>            
-            <ul className='DataCenter' data-header={"Datacenter ("+hosts.domain+")"} key={index}>
-              {host.members.map((member, idx) => (
-                <li key={idx} value={member.ip}>
-                  {member.node.map((node, i) => (
-                   <strong><ServerPopMenu serverName={node.name} serverType="Host" /></strong>
-                  ))}
-                </li>
+    <div>      
+      {hosts.map((host, index) => (
+      <ul className='DataCenter' data-header={"Datacenter ("+host.domain+")"} key={index}>            
+            {host.members.map((member, idx) => (
+            <li key={idx} value={member.ip}>
+                   <strong><ServerPopMenu serverName={member.ip} serverType="Host" /></strong>
+             </li>
               ))}
-            </ul>
-          </li>
-        ))}
       </ul>
+    ))}
     </div>
   );
 };

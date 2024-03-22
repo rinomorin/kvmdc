@@ -28,7 +28,7 @@ const HostsList = () => {
             <h2>{host.domain}</h2>            
             <ul className='DataCenter' data-header={"Datacenter ("+hosts.domain+")"} key={index}>
               {host.members.map((member, idx) => (
-                <li key={idx} value={node.ip}>
+                <li key={idx} value={member.ip}>
                   {member.node.map((node, i) => (
                    <strong><ServerPopMenu serverName={node.name} serverType="Host" /></strong>
                   ))}

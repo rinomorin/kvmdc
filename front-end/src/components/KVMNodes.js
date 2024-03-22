@@ -25,18 +25,12 @@ const HostsList = () => {
       <ul>
         {hosts.map((host, index) => (
           <li key={index}>
-            <h2>{host.domain}</h2>
-            <ul>
+            <h2>{host.domain}</h2>            
+            <ul className='DataCenter' data-header={"Datacenter ("+group.domain+")"} key={index}>
               {host.members.map((member, idx) => (
-                <li key={idx}>
+                <li key={idx} value={member.node[0].ip}>
                   {member.node.map((node, i) => (
-                    <div key={i}>
-                      <p>Name: {node.name}</p>
-                      <p>IP: {node.ip}</p>
-                      <p>Password: {node.password}</p>
-                      <p>Site: {node.site}</p>
-                      <p>User ID: {node.user_id}</p>
-                    </div>
+                   <strong><ServerPopMenu serverName={member.node[0].name} serverType="Host" /></strong>
                   ))}
                 </li>
               ))}
@@ -48,6 +42,20 @@ const HostsList = () => {
   );
 };
 
+//     return (
+//         <div>
+//             {nodes.map((group, index) => (
+//                 <ul className='DataCenter' data-header={"Datacenter ("+group.domain+")"} key={index}>
+//                     {group.members.map((member, index) => (
+//                         <li key={index} value={member.node[0].ip}>
+//                         <strong><ServerPopMenu serverName={member.node[0].name} serverType="Host" /></strong>
+//                         </li>
+//                     ))}
+//                 </ul>
+//             ))}
+//         </div>
+//     );
+// }
 
 // function MyNodes() {
 //     const [nodes, setNodes] = useState([]);

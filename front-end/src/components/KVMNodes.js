@@ -105,7 +105,7 @@ const HostsList = () => {
 function KVMNodes() {
     return (
         <div id="Nodes" className="KVMNodes">
-            <MyNodes />
+            <HostsList />
         </div>
     );
 }

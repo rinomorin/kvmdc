@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 def connect_to_hypervisor():
     # Connect to the KVM hypervisor
-    conn = libvirt.open("qemu+ssh://rmorin@192.168.100.106/system")
+    conn = libvirt.open("qemu+ssh://lv-user@192.168.100.3/system")
     if conn is None:
         raise Exception("Failed to connect to the KVM hypervisor")
     return conn
@@ -51,4 +51,4 @@ def console_connection(vm_id):
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5001,host="192.168.100.106")
+    app.run(debug=True,port=5001,host="192.168.100.3")

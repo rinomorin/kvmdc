@@ -2,7 +2,8 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const app = express();
 
-const client = new MongoClient('mongodb://localhost:27017/', { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri, { useUnifiedTopology: true });
+const client = new MongoClient('mongodb://localhost:27017/');
 const dbName = 'datacenter';
 client.connect((err) => {
     if (err) {

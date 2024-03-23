@@ -14,12 +14,12 @@ function KvmDeviceList() {
 
   return (
     <div>
-      <h1>Collections in database1</h1>
+      {/* <h1>Collections in database1</h1>
       <ul>
         {collections.map((collection, index) => (
           <li key={index}>{collection.name}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
   // const [data, setData] = useState([]);

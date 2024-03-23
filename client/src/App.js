@@ -1,20 +1,10 @@
-import React, {useEffect, useState} from 'react'
+ React, {useEffect, useState} from 'react'
+ import KVMNodes from "./components/kvmDeviceList"
 
 function App() {
-
-  const [backendData, setBackendData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/api/hosts").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  }, [])
   return (
-  <div>    
+   <div>
+     <KVMNodes />
    </div>
   )
 }

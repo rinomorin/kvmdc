@@ -1,14 +1,10 @@
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-!**/.vscode/
-.vscode/
-
-### react ###
-!**/kvmdc/node_modules/
-kvmdc/node_modules/
-!**/front-end/node_modules/
-front-end/node_modules/
+###  npm ###
+.git/
+server/buils/
+server/node_modules/
+server/package-lock.json   # For npm
+server/package-lock.json   # For npm
+venv
+.venv
 .env
+### react ###

@@ -12,14 +12,16 @@ function  KvmDeviceList () {
         }
       )
     }, [])
+
     return (
     <div>  
-      {typeof backendData.nodes === 'undefined' ? (
-         <p>Loading nodes...</p>
-      ):(
-        backendData.nodes.map((node, i) => {
-            <p key={i}>{node}</p>
-        })
+      {(typeof backendData.hosts === 'undefined') ? (
+         <p>Loading hosts...</p>
+      ) : (
+        backendData.hosts.map((host, i) => (
+            <p key={i}>{host}</p>
+        )
+      )
       )}  
     </div>
     );

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 function App() {
-  const [backendData, setBackendData] = useState[{}]
+  const [BackendData, setBackendData] = useState[{}]
 
   useEffect(() => {
     fetch("/api/hosts").then(

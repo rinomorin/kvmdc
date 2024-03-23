@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 
 function  KvmDeviceList () {
-    const [backendData, setBackendData]  = useState([]);
+    const [backendData, setBackendData]  = useState([{}]);
 
     useEffect(() => {
       fetch("/api/hosts").then(

@@ -1,10 +1,10 @@
 import React from 'react';
- import KVMNodes from "./components/kvmDeviceList";
+ import kvmDeviceList from "./components/kvmDeviceList";
 
 function App() {
   return (
    <div>
-     <KVMNodes />
+     <kvmDeviceList />
    </div>
   )
 }

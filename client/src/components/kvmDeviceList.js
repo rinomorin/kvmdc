@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect }  from 'react';
 
-export const KVMNodes =() => {
-    const [backendData, setBackendData] = useState([{}])
+export const kvmDeviceList =() => {
+    const [backendData, setBackendData]  = useState([]);
 
     useEffect(() => {
       fetch("/api/hosts").then(

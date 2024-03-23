@@ -8,3 +8,6 @@ venv
 .venv
 .env
 ### react ###
+client/node_modules/
+client/package-lock.json   # For npm
+client/package-lock.json   # For npm

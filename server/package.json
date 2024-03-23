@@ -5,16 +5,18 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
     "start": "node server",
     "dev": "nodemon server"
+=======
+    "start": "node server.js"
+>>>>>>> 4dcb9487 (dont know why)
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.1"
-  },
-  "devDependencies": {
+    "express": "^4.19.1",
     "nodemon": "^3.1.0"
   }
   

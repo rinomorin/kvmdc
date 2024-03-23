@@ -20,15 +20,15 @@ MongoClient.connect(url, (err, client) => {
     const db = client.db(dbName);
   
     // API endpoint to fetch data from database1
-    app.get('/api/data', async (req, res) => {
-      try {
-        const data = await db.collection('  ').find({}).toArray();
-        res.json(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ error: 'Error fetching data' });
-      }
-    });
+    // app.get('/api/data', async (req, res) => {
+    //   try {
+    //     const data = await db.collection('  ').find({}).toArray();
+    //     res.json(data);
+    //   } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //     res.status(500).json({ error: 'Error fetching data' });
+    //   }
+    // });
     app.get('/api/collections', async (req, res) => {
         try {
           const collections = await db.listCollections().toArray();

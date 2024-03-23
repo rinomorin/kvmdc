@@ -1,5 +1,5 @@
- React, {useEffect, useState} from 'react'
- import KVMNodes from "./components/kvmDeviceList"
+ React, {useEffect, useState} from 'react';
+ import KVMNodes from "./components/kvmDeviceList";
 
 function App() {
   return (

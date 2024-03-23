@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.get('/api', (req,  res) => {
+app.get("/api/hosts", (req,  res) => {
 
     res.json({nodes: ["morin-kvm01","morin-kvm02","morin-kvm03"]})
 })

@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from 'react';
 
 function KvmDeviceList() {
-  const [data, setData] = useState([]);
+  const [collections, setCollections] = useState([]);
 
   useEffect(() => {
-    fetch('/api/data')
+    fetch('/api/collections')
       .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error('Error fetching data:', error));
+      .then(collections => setCollections(collections))
+      .catch(error => console.error('Error fetching collections:', error));
   }, []);
 
   return (
     <div>
-      <h1>Data from database1</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <h1>Collections in database1</h1>
+      <ul>
+        {collections.map((collection, index) => (
+          <li key={index}>{collection.name}</li>
+        ))}
+      </ul>
     </div>
   );
+  // const [data, setData] = useState([]);
+
+  // useEffect(() => {
+  //   fetch('/api/data')
+  //     .then(response => response.json())
+  //     .then(data => setData(data))
+  //     .catch(error => console.error('Error fetching data:', error));
+  // }, []);
+
+  // return (
+  //   <div>
+  //     <h1>Data from datacent</h1>
+  //     <pre>{JSON.stringify(data, null, 2)}</pre>
+  //   </div>
+  // );
 
   // const [domainGroupsData, setDomainGroupsData] = useState([]);
 

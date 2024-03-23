@@ -21,13 +21,22 @@ MongoClient.connect(url, (err, client) => {
     // API endpoint to fetch data from database1
     app.get('/api/data', async (req, res) => {
       try {
-        const data = await db.collection('collection1').find({}).toArray();
+        const data = await db.collection('  ').find({}).toArray();
         res.json(data);
       } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).json({ error: 'Error fetching data' });
       }
     });
+    app.get('/api/collections', async (req, res) => {
+        try {
+          const collections = await db.listCollections().toArray();
+          res.json(collections);
+        } catch (error) {
+          console.error('Error fetching collections:', error);
+          res.status(500).json({ error: 'Error fetching collections' });
+        }
+      });
   });
 
 // Connect to MongoDB

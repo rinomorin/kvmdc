@@ -6,7 +6,7 @@ const app = express();
 
 // MongoDB connection URL
 const url = 'mongodb://localhost:27017';
-const dbName = 'database1';
+const dbName = 'datacenter';
 
 // Connect to MongoDB
 MongoClient.connect(url, (err, client) => {

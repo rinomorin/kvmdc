@@ -18,7 +18,7 @@ function  KvmDeviceList () {
          <p>Loading nodes...</p>
       ):(
         backendData.nodes.map((node, i) => {
-            <p key={i}>{node.name}</p>
+            <p key={i}>{node}</p>
         })
       )}  
     </div>

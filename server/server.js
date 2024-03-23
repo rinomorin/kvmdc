@@ -1,7 +1,9 @@
 const express = require('express');
+const MongoClient = require('mongodb').MongoClient;
 const app = express();
-app.config["MONGO_URI"] = "mongodb://localhost:27017/datacenter"
-mongo = PyMongo(app)
+
+// const MONGO_URI = "mongodb://localhost:27017/datacenter"
+// mongo = PyMongo(app)
 
 client = MongoClient('mongodb://localhost:27017/')
 db = client['datacenter']

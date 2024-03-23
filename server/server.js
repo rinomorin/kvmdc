@@ -1,29 +1,37 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
+// const mongoose = require('mongoose');
 // const cors = require('cors');
 const app = express();
 
+// MongoDB connection URL
+const url = 'mongodb://localhost:27017';
+const dbName = 'database1';
+
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/datacenter');
+MongoClient.connect(url, (err, client) => {
+    if (err) {
+      console.error('Error connecting to MongoDB:', err);
+      return;
+    }
+    console.log('Connected to MongoDB');
+  
+    const db = client.db(dbName);
+  
+    // API endpoint to fetch data from database1
+    app.get('/api/data', async (req, res) => {
+      try {
+        const data = await db.collection('collection1').find({}).toArray();
+        res.json(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Error fetching data' });
+      }
+    });
+  });
 
-// Define MongoDB schema and model
-const DatacenterSchema = new mongoose.Schema({
-  domain: String,
-  members: [{ host: [{ name: String, ip: String, user_id: String, password: String, site: String }] }]
-});
-
-const Datacenter = mongoose.model('DomainGroup', DatacenterSchema);
-
-// API endpoint to fetch domain groups data
-app.get('/api/domain_groups_data', async (req, res) => {
-  try {
-    const DatacenterData = await Datacenter.find();
-    res.json(DatacenterData);
-  } catch (error) {
-    console.error('Error fetching domain data:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+// Connect to MongoDB
+// mongoose.connect('mongodb://localhost:27017/datacenter');
 
 // app.get("/api/hosts", (req,  res) => {
 //     hosts = list(db.find({}, {'_id': 0}))

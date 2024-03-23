@@ -15,18 +15,18 @@ mongoose.connect('mongodb://localhost:27017/mydatabase')
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error(err));
 
-const domain_groups_dataSchema = new mongoose.Schema({
-    domain String,
-    members: [
-        name: String,
-        ip: String,
-        user_id String,
-        password String,
-        site String
-    ]
-  });
+// const domain_groups_dataSchema = new mongoose.Schema({
+//     domain String,
+//     members: [
+//         name: String,
+//         ip: String,
+//         user_id String,
+//         password String,
+//         site String
+//     ]
+//   });
 
-  const domain_groups_data = mongoose.model('domain_groups_data', domain_groups_dataSchema);
+//   const domain_groups_data = mongoose.model('domain_groups_data', domain_groups_dataSchema);
   app.get('/api/collections', async (req, res) => {
     try {
       // Fetch all collections using Mongoose model names

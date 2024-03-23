@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 function KvmDeviceList() {
-  const [collections, setCollections] = useState([]);
+  // const [collections, setCollections] = useState([]);
 
   useEffect(() => {
     fetch('/api/collections')
       .then(response => response.json())
-      .then(collections => setCollections(collections))
+      .then(data => {
+        console.log(data); // Handle the collections data
+      })
       .catch(error => console.error('Error fetching collections:', error));
   }, []);
 

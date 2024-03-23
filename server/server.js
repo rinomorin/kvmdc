@@ -1,23 +1,53 @@
 const express = require('express');
-const MongoClient = require('mongodb').MongoClient;
-// const mongoose = require('mongoose');
-const cors = require('cors');
+// const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
+// const cors = require('cors');
 const app = express();
-app.use(cors());
+// app.use(cors());
 
 // MongoDB connection URL
 const url = 'mongodb://localhost:27017';
 const dbName = 'datacenter';
 
-// Connect to MongoDB
-MongoClient.connect(url, (err, client) => {
-    if (err) {
-      console.error('Error connecting to MongoDB:', err);
-      return;
+// const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/mydatabase')
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error(err));
+
+const domain_groups_dataSchema = new mongoose.Schema({
+    domain String,
+    members: [
+        name: String,
+        ip: String,
+        user_id String,
+        password String,
+        site String
+    ]
+  });
+
+  const domain_groups_data = mongoose.model('domain_groups_data', domain_groups_dataSchema);
+  app.get('/api/collections', async (req, res) => {
+    try {
+      // Fetch all collections using Mongoose model names
+      const collections = await mongoose.connection.db.listCollections().toArray();
+      res.json(collections);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
     }
-    console.log('Connected to MongoDB');
+  });
+
+
+// Connect to MongoDB
+// MongoClient.connect(url, (err, client) => {
+//     if (err) {
+//       console.error('Error connecting to MongoDB:', err);
+//       return;
+//     }
+//     console.log('Connected to MongoDB');
   
-    const db = client.db(dbName);
+//     const db = client.db(dbName);
   
     // API endpoint to fetch data from database1
     // app.get('/api/data', async (req, res) => {
@@ -29,16 +59,16 @@ MongoClient.connect(url, (err, client) => {
     //     res.status(500).json({ error: 'Error fetching data' });
     //   }
     // });
-    app.get('/api/collections', async (req, res) => {
-        try {
-          const collections = await db.listCollections().toArray();
-          res.json(collections);
-        } catch (error) {
-          console.error('Error fetching collections:', error);
-          res.status(500).json({ error: 'Error fetching collections' });
-        }
-      });
-  });
+//     app.get('/api/collections', async (req, res) => {
+//         try {
+//           const collections = await db.listCollections().toArray();
+//           res.json(collections);
+//         } catch (error) {
+//           console.error('Error fetching collections:', error);
+//           res.status(500).json({ error: 'Error fetching collections' });
+//         }
+//       });
+//   });
 
 // Connect to MongoDB
 // mongoose.connect('mongodb://localhost:27017/datacenter');

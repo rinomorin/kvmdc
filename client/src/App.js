@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 
 function App() {
 
-  const [BackendData, setBackendData] = useState([{}])
+  const [backendData, setBackendData] = useState([{}])
 
   useEffect(() => {
     fetch("/api/hosts").then(

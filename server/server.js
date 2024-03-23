@@ -16,7 +16,7 @@ client.connect((err) => {
   });
 
 app.get("/api/hosts", (req,  res) => {
-    hosts = list(db.hosts.find({}, {'_id': 0}))
+    hosts = list(db.find({}, {'_id': 0}))
     return jsonify(hosts)
     // res.json({domain_groups_data: [{
     //     "domain": "MorinSoft",

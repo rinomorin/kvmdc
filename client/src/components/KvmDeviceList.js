@@ -18,10 +18,7 @@ function  KvmDeviceList () {
       {(typeof backendData.hosts === 'undefined') ? (
          <p>Loading hosts...</p>
       ) : (
-        backendData.hosts.map((host, i) => (
-            <p key={i}>{host}</p>
-        )
-      )
+        backendData.hosts.map((host, i) => (<p key={i}>{host}</p>))
       )}  
     </div>
     );

@@ -1,14 +1,22 @@
 const express = require('express');
-const MongoClient = require('mongodb');
+const { MongoClient } = require('mongodb');
 const app = express();
-from pymongo import MongoClient;
 
-client = MongoClient('mongodb://localhost:27017/')
-db = client['datacenter']
-
+const client = new MongoClient('mongodb://localhost:27017/', { useNewUrlParser: true, useUnifiedTopology: true });
+const dbName = 'datacenter';
+client.connect((err) => {
+    if (err) {
+      console.error('Error connecting to MongoDB:', err);
+      return;
+    }
+    console.log('Connected to MongoDB');
+  
+    const db = client.db(dbName);
+    // Your MongoDB operations here
+  });
 
 app.get("/api/hosts", (req,  res) => {
-    hosts = list(mongo.db.hosts.find({}, {'_id': 0}))
+    hosts = list(db.hosts.find({}, {'_id': 0}))
     return jsonify(hosts)
     // res.json({domain_groups_data: [{
     //     "domain": "MorinSoft",

@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 
-export const kvmDeviceList =() => {
+function  KvmDeviceList () {
     const [backendData, setBackendData]  = useState([]);
 
     useEffect(() => {
@@ -17,10 +17,12 @@ export const kvmDeviceList =() => {
       {typeof backendData.nodes === 'undefined' ? (
          <p>Loading nodes...</p>
       ):(
-        backendData.nodes.map((node,i) => {
+        backendData.nodes.map((node, i) => {
             <p key={i}>{node.name}</p>
         })
       )}  
     </div>
-    )
+    );
 }
+
+export default KvmDeviceList;

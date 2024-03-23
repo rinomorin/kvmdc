@@ -11,10 +11,30 @@ const dbName = 'datacenter';
 
 // const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/mydatabase')
+mongoose.connect('mongodb://localhost:27017/datacenter')
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error(err));
 
+
+// In your Express route handler
+app.get('/api/database', async (req, res) => {
+    try {
+      // Fetch all documents from all collections in the database
+      const collections = await mongoose.connection.db.collections();
+      const data = {};
+  
+      for (const collection of collections) {
+        const documents = await collection.find({}).toArray();
+        data[collection.collectionName] = documents;
+      }
+  
+      res.json(data);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
 // const domain_groups_dataSchema = new mongoose.Schema({
 //     domain String,
 //     members: [
@@ -27,17 +47,6 @@ mongoose.connect('mongodb://localhost:27017/mydatabase')
 //   });
 
 //   const domain_groups_data = mongoose.model('domain_groups_data', domain_groups_dataSchema);
-  app.get('/api/collections', async (req, res) => {
-    try {
-      // Fetch all collections using Mongoose model names
-      const collections = await mongoose.connection.db.listCollections().toArray();
-      res.json(collections);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
-
 
 // Connect to MongoDB
 // MongoClient.connect(url, (err, client) => {

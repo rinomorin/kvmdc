@@ -16,7 +16,7 @@ function KvmDeviceList() {
       <h2>Device List</h2>
       <ul>
         {collections.map((item, index) => (
-          <li key={index}>{item.name} - {item.description}</li>
+          <li key={index}>{item} </li>
           // Adjust 'name' and 'description' properties based on your actual data structure
         ))}
       </ul>

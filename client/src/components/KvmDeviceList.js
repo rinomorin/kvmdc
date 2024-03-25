@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 function KvmDeviceList() {
-  const [collections, setCollections] = useState([]);
+  // const [collections, setCollections] = useState([]);
   useEffect(() => {
     fetch('/api/database')
       .then(response => response.json())
       .then(data => {
-        setCollections(data); // Set the fetched data to state
         console.log(data); // Handle the database content
       })
       .catch(error => console.error('Error fetching database content:', error));
@@ -14,16 +13,14 @@ function KvmDeviceList() {
   
   return (
     <div>
-      <h2>Device List</h2>
+      {/* <h1>Collections in database1</h1>
       <ul>
-        {data.map((item, index) => (
-          <li key={index}>{item} </li>
-          // Adjust 'name' and 'description' properties based on your actual data structure
+        {collections.map((collection, index) => (
+          <li key={index}>{collection.name}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
-
   // const [data, setData] = useState([]);
 
   // useEffect(() => {

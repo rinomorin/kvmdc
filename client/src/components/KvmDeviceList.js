@@ -4,7 +4,7 @@ function KvmDeviceList() {
   const [collections, setCollections] = useState([]);
 
   useEffect(() => {
-    fetch('/api/collections')
+    fetch('/api/hosts')
       .then(response => response.json())
       .then(data => {
         console.log(data); // Handle the collections data

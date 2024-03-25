@@ -6,7 +6,7 @@ function KvmDeviceList() {
     fetch('/api/database')
       .then(response => response.json())
       .then(data => {
-        setData(data);
+        setCollections(data); // Set the fetched data to state
         console.log(data); // Handle the database content
       })
       .catch(error => console.error('Error fetching database content:', error));

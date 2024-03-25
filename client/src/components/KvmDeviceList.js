@@ -8,6 +8,7 @@ function KvmDeviceList() {
       .then(response => response.json())
       .then(data => {
         console.log(data); // Handle the collections data
+        setCollections(data);
       })
       .catch(error => console.error('Error fetching collections:', error));
   }, []);
@@ -15,11 +16,11 @@ function KvmDeviceList() {
   return (
     <div>
       <h1>Collections in database1</h1>
-      {/* <ul>
+      <ul>
         {collections.map((collection, index) => (
           <li key={index}>{collection.name}</li>
         ))}
-      </ul> */}
+      </ul>
 
     </div>
   );

@@ -15,7 +15,7 @@ function KvmDeviceList() {
     <div>
       {/* 
       <h1>Collections in database1</h1>
-      <ul> */
+      <ul> 
         {collections.map((collection, index) => (
           <li key={index}>{collection.name}</li>
         ))}

@@ -12,17 +12,17 @@ function KvmDeviceList() {
       .catch(error => console.error('Error fetching collections:', error));
   }, []);
 
-  // return (
-  //   <div>
-  //     <h1>Collections in database1</h1>
-  //     {/* <ul>
-  //       {collections.map((collection, index) => (
-  //         <li key={index}>{collection.name}</li>
-  //       ))}
-  //     </ul> */}
+  return (
+    <div>
+      <h1>Collections in database1</h1>
+      {/* <ul>
+        {collections.map((collection, index) => (
+          <li key={index}>{collection.name}</li>
+        ))}
+      </ul> */}
 
-  //   </div>
-  // );
+    </div>
+  );
   // const [data, setData] = useState([]);
 
   // useEffect(() => {

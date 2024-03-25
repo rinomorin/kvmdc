@@ -3,41 +3,41 @@ import React, { useState, useEffect } from 'react';
 function KvmDeviceList() {
   const [collections, setCollections] = useState([]);
   useEffect(() => {
-    fetch('/api/database')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data); // Handle the database content
-      })
-      .catch(error => console.error('Error fetching database content:', error));
-  }, []);
-  
-  return (
-    <div>
-      <h2>Device List</h2>
-      <ul>
-        {collections.map((item, index) => (
-          <li key={index}>{item} </li>
-          // Adjust 'name' and 'description' properties based on your actual data structure
-        ))}
-      </ul>
-    </div>
-  );
-}
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   fetch('/api/data')
+  //   fetch('/api/database')
   //     .then(response => response.json())
-  //     .then(data => setData(data))
-  //     .catch(error => console.error('Error fetching data:', error));
+  //     .then(data => {
+  //       console.log(data); // Handle the database content
+  //     })
+  //     .catch(error => console.error('Error fetching database content:', error));
   // }, []);
-
+  
   // return (
   //   <div>
-  //     <h1>Data from datacent</h1>
-  //     <pre>{JSON.stringify(data, null, 2)}</pre>
+  //     <h2>Device List</h2>
+  //     <ul>
+  //       {collections.map((item, index) => (
+  //         <li key={index}>{item} </li>
+  //         // Adjust 'name' and 'description' properties based on your actual data structure
+  //       ))}
+  //     </ul>
   //   </div>
   // );
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/data')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  return (
+    <div>
+      <h1>Data from datacent</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
 
   // const [domainGroupsData, setDomainGroupsData] = useState([]);
 

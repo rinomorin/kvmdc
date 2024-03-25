@@ -13,17 +13,16 @@ function KvmDeviceList() {
   
   return (
     <div>
-      {/* 
-      <h1>Collections in database1</h1>
-      <ul> */
-        {domaingroups.map((collection, index) => (
-          <p key={index}>{collection.name}</p>
-        ))} /*
-      </ul> 
-      */
-      }
+      <h2>Device List</h2>
+      <ul>
+        {collections.map((item, index) => (
+          <li key={index}>{item.name} - {item.description}</li>
+          // Adjust 'name' and 'description' properties based on your actual data structure
+        ))}
+      </ul>
     </div>
   );
+
   // const [data, setData] = useState([]);
 
   // useEffect(() => {

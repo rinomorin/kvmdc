@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function KvmDeviceList() {
-  // const [collections, setCollections] = useState([]);
+  const [collections, setCollections] = useState([]);
 
   useEffect(() => {
     fetch('/api/collections')

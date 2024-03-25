@@ -2,26 +2,24 @@ import React, { useState, useEffect } from 'react';
 
 function KvmDeviceList() {
   // const [collections, setCollections] = useState([]);
+
   useEffect(() => {
-    fetch('/api/database')
+    fetch('/api/collections')
       .then(response => response.json())
       .then(data => {
-        console.log(data); // Handle the database content
+        console.log(data); // Handle the collections data
       })
-      .catch(error => console.error('Error fetching database content:', error));
+      .catch(error => console.error('Error fetching collections:', error));
   }, []);
 
   return (
     <div>
-      {/* 
       <h1>Collections in database1</h1>
-      <ul> 
+      <ul>
         {collections.map((collection, index) => (
           <li key={index}>{collection.name}</li>
         ))}
-      </ul> 
-      */
-      }
+      </ul>
     </div>
   );
   // const [data, setData] = useState([]);

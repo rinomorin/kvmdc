@@ -20,6 +20,7 @@ function KvmDeviceList() {
           <li key={index}>{collection.name}</li>
         ))}
       </ul>
+      
     </div>
   );
   // const [data, setData] = useState([]);

@@ -22,7 +22,7 @@ function KvmDeviceList() {
       </ul>
     </div>
   );
-
+}
   // const [data, setData] = useState([]);
 
   // useEffect(() => {

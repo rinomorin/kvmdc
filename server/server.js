@@ -34,66 +34,24 @@ app.get('/api/database', async (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
     }
   });
+
+ app.get('/api/hosts', async (req, res) => {
+    try {
+      // Fetch all documents from all collections in the database
+      const collections = await mongoose.connection.db.collections();
+      const data = {};
   
-// const domain_groups_dataSchema = new mongoose.Schema({
-//     domain String,
-//     members: [
-//         name: String,
-//         ip: String,
-//         user_id String,
-//         password String,
-//         site String
-//     ]
-//   });
-
-//   const domain_groups_data = mongoose.model('domain_groups_data', domain_groups_dataSchema);
-
-// Connect to MongoDB
-// MongoClient.connect(url, (err, client) => {
-//     if (err) {
-//       console.error('Error connecting to MongoDB:', err);
-//       return;
-//     }
-//     console.log('Connected to MongoDB');
+      for (const collection of collections) {
+        const documents = await collection.find({}).toArray();
+        data[collection.collectionName] = documents;
+      }
   
-//     const db = client.db(dbName);
-  
-    // API endpoint to fetch data from database1
-    // app.get('/api/data', async (req, res) => {
-    //   try {
-    //     const data = await db.collection('  ').find({}).toArray();
-    //     res.json(data);
-    //   } catch (error) {
-    //     console.error('Error fetching data:', error);
-    //     res.status(500).json({ error: 'Error fetching data' });
-    //   }
-    // });
-//     app.get('/api/collections', async (req, res) => {
-//         try {
-//           const collections = await db.listCollections().toArray();
-//           res.json(collections);
-//         } catch (error) {
-//           console.error('Error fetching collections:', error);
-//           res.status(500).json({ error: 'Error fetching collections' });
-//         }
-//       });
-//   });
+      res.json(data);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
 
-// Connect to MongoDB
-// mongoose.connect('mongodb://localhost:27017/datacenter');
 
-// app.get("/api/hosts", (req,  res) => {
-//     hosts = list(db.find({}, {'_id': 0}))
-//     return jsonify(hosts)
-//     // res.json(
-//     //     {domain_groups_data: [{
-//     //     "domain": "MorinSoft",
-//     //     "members": [
-//     //         {"host": [{"name": "morin-kvm01", "ip": "192.168.100.3", "user_id": "lv-user", "password": "password1", "site": "Site 1"}]},
-//     //         {"host": [{"name": "morin-kvm02", "ip": "192.168.100.4", "user_id": "lv-user", "password": "password1", "site": "Site 2"}]},
-//     //         {"host": [{"name": "morin-kvm03", "ip": "192.168.100.5", "user_id": "lv-user", "password": "password1", "site": "Site 3"}]}
-//     //     ]}
-//     // ]}
-//     // )
-// })
 app.listen(4001,() => {console.log("server listening on port 4001")})

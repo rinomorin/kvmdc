@@ -1,9 +1,10 @@
-import KvmDeviceList from "./components/KvmDeviceList";
+// import KvmDeviceList from "./components/KvmDeviceList";
+import DCBody from './components/DCBody';
 
 function App() {
   return (
    <div>
-     <KvmDeviceList />
+      <DCBody />
    </div>
   )
 }

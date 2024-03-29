@@ -1,57 +1,70 @@
+// server.js
 const express = require('express');
-// const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require('cors');
 const app = express();
-// app.use(cors());
+const PORT = process.env.PORT || 4001;
 
-// MongoDB connection URL
-const url = 'mongodb://localhost:27017';
-const dbName = 'datacenter';
+app.use(cors());
+app.use(express.json());
 
-// const mongoose = require('mongoose');
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/datacenter');
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
 
-mongoose.connect('mongodb://localhost:27017/datacenter')
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error(err));
-
-
-// In your Express route handler
-app.get('/api/database', async (req, res) => {
-    try {
-      // Fetch all documents from all collections in the database
-      const collections = await mongoose.connection.db.collections();
-      const data = {};
-  
-      for (const collection of collections) {
-        const documents = await collection.find({}).toArray();
-        data[collection.collectionName] = documents;
+// Define a schema for the hosts collection
+const hostSchema = new mongoose.Schema({
+  domain: String,
+  members: [
+    {
+      node: {
+        name: String,
+        ip: String
       }
-  
-      res.json(data);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Internal server error' });
     }
-  });
+  ]
+});
 
- app.get('/api/hosts', async (req, res) => {
-    try {
-      // Fetch all documents from all collections in the database
-      const collections = await mongoose.connection.db.collections();
-      const data = {};
-  
-      for (const collection of collections) {
-        const documents = await collection.find({}).toArray();
-        data[collection.collectionName] = documents;
+const guestSchema = new mongoose.Schema({
+  nodes: String,
+  members:[
+    {
+      vm: {
+        name: String,
+        ip: String
       }
-  
-      res.json(data);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Internal server error' });
     }
-  });
+  ]
+});
 
+// Define a model for the hosts collection
+const Host   = mongoose.model('Host', hostSchema);
+const Member = mongoose.model('Member', guestSchema);
+// Define a route to fetch hosts from the database
+app.get('/api/hosts', async (req, res) => {
+  try {
+    const hosts = await Host.find();
+    res.json(hosts);
+  } catch (err) {
+    console.error('Error fetching hosts:', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
-app.listen(4001,() => {console.log("server listening on port 4001")})
+app.get('/api/guests', async (req, res) => {
+  try {
+    const guests = await Member.find();
+    res.json(guests);
+  } catch (err) {
+    console.error('Error fetching guests:', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

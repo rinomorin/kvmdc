@@ -1,0 +1,36 @@
+{
+    "cSpell.words": [
+        "attribs",
+        "bson",
+        "callout",
+        "confile",
+        "crypting",
+        "datastring",
+        "dbcon",
+        "dbconn",
+        "dbtoken",
+        "employee_serial_number",
+        "fernet",
+        "graphene",
+        "graphiql",
+        "graphql",
+        "jsonify",
+        "kfile",
+        "kvmconfig",
+        "KVMDC",
+        "loggit",
+        "mybearer",
+        "psutil",
+        "pyfile",
+        "pymongo",
+        "pyotp",
+        "qrcode",
+        "Resolv",
+        "svgwrite",
+        "totp",
+        "urandom"
+    ],
+    "cSpell.ignoreWords": [
+        "testmanage"
+    ]
+}

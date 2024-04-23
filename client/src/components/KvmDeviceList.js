@@ -14,7 +14,7 @@ function KvmDeviceList() {
       .catch(error => {
         console.error('Error fetching hosts:', error);
       });
-  }, []);
+  });
 
   return (
     <div>
